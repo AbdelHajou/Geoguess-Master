@@ -32,6 +32,7 @@
           ref="mapRef"
           :randomLatLng="state.randomLatLng"
           :roomName="roomName"
+          :maxRounds="maxRounds"
           :playerNumber="playerNumber"
           :isReady="state.isReady"
           :round="state.round"

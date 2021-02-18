@@ -87,6 +87,10 @@ export default defineComponent({
       type: String,
       required: true,
     },
+    maxRounds: {
+      type: Number,
+      required: true
+    },
     playerNumber: {
       type: Number,
       required: true,
@@ -127,7 +131,7 @@ export default defineComponent({
       isNextStreetViewReady: boolean;
       isNextButtonVisible: boolean;
       isSummaryButtonVisible: boolean;
-      dialogSummary: boolean;
+      dialogSummary: boolean
     }>({
       markers: [],
       polylines: [],
@@ -150,6 +154,7 @@ export default defineComponent({
       isNextButtonVisible: false,
       isSummaryButtonVisible: false,
       dialogSummary: false,
+      maxRounds: 5
     })
 
     const isNextButtonEnabled = computed<boolean>(() => {
@@ -307,7 +312,7 @@ export default defineComponent({
             putMarker(props!.randomLatLng!)
             // Remove guess node every time the round is done
             state.room!.child('guess').remove()
-            if (props.round >= 5) {
+            if (props.round >= this.maxRounds) {
               // Show summary button
               snapshot.child('finalScore').forEach((childSnapshot) => {
                 let playerName = snapshot.child('playerName').child(childSnapshot!.key!).val()

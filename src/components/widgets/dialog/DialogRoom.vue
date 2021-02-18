@@ -23,6 +23,7 @@ import 'firebase/database'
 
 import CardRoomName from '@/components/widgets/card/CardRoomName.vue'
 import CardRoomSize from '@/components/widgets/card/CardRoomSize.vue'
+import CardRounds from '@/components/widgets/card/CardRounds.vue'
 import CardRoomTime from '@/components/widgets/card/CardRoomTime.vue'
 import CardRoomPlayerName from '@/components/widgets/card/CardRoomPlayerName.vue'
 
@@ -37,6 +38,7 @@ export default defineComponent({
   components: {
     'roomName': CardRoomName,
     'roomSize': CardRoomSize,
+    'rounds': CardRounds,
     'timeLimitation': CardRoomTime,
     'playerName': CardRoomPlayerName,
   },
@@ -47,12 +49,14 @@ export default defineComponent({
       errorMessage: string;
       room: firebase.database.Reference | null;
       roomName: string;
+      rounds: number;
       currentComponent: string;
       playerNumber: number;
     }>({
       errorMessage: '',
       room: null,
       roomName: '',
+      rounds: 5,
       currentComponent: 'roomName',
       playerNumber: 0,
     })
@@ -104,6 +108,16 @@ export default defineComponent({
       })
     }
 
+    function setRounds(rounds: number): void {
+      state.rounds!.update({
+        rounds: rounds
+      }, (error) => {
+        if (!error) {
+          state.currentComponent = 'rounds'
+        }
+      })
+    }
+
     function setTimeLimitation(timeLimitation: number): void {
       state.room!.update({
         timeLimitation: timeLimitation
@@ -150,6 +164,7 @@ export default defineComponent({
       state,
       searchRoom,
       setRoomSize,
+      setRounds,
       setTimeLimitation,
       setPlayerName,
       cancel,
