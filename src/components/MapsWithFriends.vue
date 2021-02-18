@@ -311,7 +311,7 @@ export default defineComponent({
             putMarker(props!.randomLatLng!)
             // Remove guess node every time the round is done
             state.room!.child('guess').remove()
-            if (props.round >= this.maxRounds) {
+            if (props.round >= props.maxRounds) {
               // Show summary button
               snapshot.child('finalScore').forEach((childSnapshot) => {
                 let playerName = snapshot.child('playerName').child(childSnapshot!.key!).val()
