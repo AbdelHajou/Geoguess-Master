@@ -24,14 +24,14 @@
             class="ml-8 mr-8"
             @click="$router.push('street-view')"
           >
-            Single Player
+            In je eentje
           </button>
           <button 
             id="with-friends-button"
             class="ml-8 mr-8"
             @click="state.dialogRoom = true"
           >
-            With Friends
+            Met Abdel (je gaat toch verliezen tho)
           </button>
         </v-row>
       </v-container>
