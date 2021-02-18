@@ -153,8 +153,7 @@ export default defineComponent({
       isNextStreetViewReady: false,
       isNextButtonVisible: false,
       isSummaryButtonVisible: false,
-      dialogSummary: false,
-      maxRounds: 5
+      dialogSummary: false
     })
 
     const isNextButtonEnabled = computed<boolean>(() => {

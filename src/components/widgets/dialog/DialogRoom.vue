@@ -8,6 +8,7 @@
       :errorMessage="state.errorMessage"
       @searchRoom="searchRoom"
       @setRoomSize="setRoomSize"
+      @setRounds="setRounds"
       @setTimeLimitation="setTimeLimitation"
       @setPlayerName="setPlayerName"
       @cancel="cancel" 
@@ -109,13 +110,7 @@ export default defineComponent({
     }
 
     function setRounds(rounds: number): void {
-      state.rounds!.update({
-        rounds: rounds
-      }, (error) => {
-        if (!error) {
-          state.currentComponent = 'rounds'
-        }
-      })
+      state.rounds = rounds;
     }
 
     function setTimeLimitation(timeLimitation: number): void {
